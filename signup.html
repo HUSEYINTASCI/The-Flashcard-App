@@ -5,28 +5,46 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <title>Berkeley Flashcards Signup</title>
-    <link rel="stylesheet" href="assets/style/reset.css" />
-    <link href="assets/style/signup.css" rel="stylesheet" />
-</head>
-
-<body id="signup">
-   
-   
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="/__/firebase/6.3.5/firebase-app.js"></script>
-
  
-    <script src="/__/firebase/6.3.5/firebase-auth.js"></script>
-    <script src="/__/firebase/6.3.5/firebase-firestore.js"></script>
+    <title>Berkeley Flashcards Signup</title>
+    <link
+      href="assets/images/icon.jpg"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/style/reset.css" />
+    <link href="assets/style/style.css" rel="stylesheet" />
+</head>
+<body id="sgnp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 well">
+                    <img src="assets/images/icon.jpg" alt="im" style="
+                    margin: 0 0 21px 196px">
+                        <h2 style="
+                        margin: 0 0 21px 138px">Flashcard Sign Up</h2>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="E-Mail">
+                </div>
+               
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <button id="signupbtn" class="btn btn-primary btn-block">Sign Up</button>
+                <hr>
+                <button id="cls" class="btn btn-primary btn-block">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
     <script src="assets/javascript/signup.js"></script>
-    <script async defertype="text/javascript"></script>
-    <script src="/__/firebase/init.js"></script>
 </body>
 
 </html>

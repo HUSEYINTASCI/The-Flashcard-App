@@ -5,10 +5,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
     <title>Berkeley Flashcards</title>
+    <link
+      href="assets/images/icon.jpg"
+      rel="icon"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="assets/style/reset.css" />
     <link href="assets/style/style.css" rel="stylesheet" />
 </head>
@@ -55,12 +57,11 @@
                                 placeholder="Search classmate" aria-label="Search" aria-describedby="basic-addon2" />
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">Search</button>
-                                <button id="login" class="btn btn-primary" type="button">
-                                    Login
-                                </button>
-                                <button id="signup" class="btn btn-primary" type="button">
-                                    Sign Up
-                                </button>
+                                 
+                                <button id="signout" class="btn btn-primary" type="button">
+                                        Sign Out
+                                    </button>
+                                    <div id="usr"></div>
                             </div>
                         </div>
                     </form>
@@ -142,15 +143,13 @@
     
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="/__/firebase/6.3.5/firebase-app.js"></script>
-
- 
-    <script src="/__/firebase/6.3.5/firebase-auth.js"></script>
-    <script src="/__/firebase/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
     <script src="assets/javascript/project.js"></script>
-    <script async defertype="text/javascript"></script>
-    <script src="/__/firebase/init.js"></script>
+ 
+     
 </body>
 
 </html>

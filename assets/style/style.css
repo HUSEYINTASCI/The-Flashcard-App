@@ -10595,12 +10595,18 @@ a:focus {
   flex: 1 0 auto;
 }
 
-.container,
-.container-fluid {
+.container{
+  padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin: 162px 4px 0 437px;
+    position: fixed;
+
+}
+.container-fluid{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
 
+}
 .scroll-to-top {
   position: fixed;
   right: 1rem;
@@ -12080,13 +12086,13 @@ body.sidebar-toggled footer.sticky-footer {
     margin: -23px 0 0 0;
 }
 
-#signup{
+#signout{
 
   margin: 0 0 0 830px;
     position: absolute;
     width: 93px;
 }
-#login{
+#usr{
   margin: 0 0 0 722px;
     position: absolute;
     width: 93px;
