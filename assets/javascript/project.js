@@ -52,7 +52,7 @@ $(document).ready(function () {
   };
   
   firebase.initializeApp(firebaseConfig);
-
+   var db=firebase.database();
   var uconnect = firebase.auth();
   var data = firebase.firestore();
   var us;
@@ -64,9 +64,10 @@ $(document).ready(function () {
       data.collection("classmate").doc(user.uid).get().then(doc => {
 
         us = doc.data().username;
-
+        
       // account info 
         $("#usr").prepend($("<p>").text("Hello "+us));
+        
        
         
 
@@ -74,17 +75,66 @@ $(document).ready(function () {
 
     }
   });
+   
+  data.collection("classmate").get( ).then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+       var usrl=  $("<li>").text( `${doc.data().username}`); 
 
-
-
-// signOut
-  $("#signout").on("click", function () {
-    uconnect.signOut().then(function () {
-      window.location.href = "signin.html";
-    }).catch(function (error) {
-      
+        
+        $("#userlist").prepend(usrl);
     });
+});
 
+    
+// signOut
+$("#signout").on("click", function () {
+  uconnect.signOut().then(function () {
+    window.location.href = "signin.html";
+  }).catch(function (error) {
+    
   });
 
 });
+
+
+
+
+
+//Create Flashcard
+$("#create").on("click",function(){
+
+  var question=$("#flsq").val();
+  var ansver=$("#flsa").val();
+
+
+if (question==""||ansver==""){
+alert("You can not create empty flascard");
+
+}else{
+  data.collection("flashcardpool").add({
+    first: question,
+    last: ansver
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+
+$("#flsq").val("");
+$("#flsa").val("");
+}
+});
+
+
+
+
+
+
+    
+});
+
+
+ 
+ 

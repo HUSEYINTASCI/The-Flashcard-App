@@ -37,6 +37,7 @@
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Classmates</span></a>
+                    <li id="userlist"></li>
             </li>
 
             <!-- Divider -->
@@ -67,11 +68,10 @@
                     </form>
                 </nav>
 
-                <!-- Begin Page Content -->
+                 
                 <div class="container-fluid">
-                    <!-- Content Row -->
+                    
                     <div class="row">
-                        <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div id="r1" class="card-body"></div>
@@ -95,7 +95,7 @@
                     </div>
 
                     <!-- Flashcards -->
-                    <div class="row">
+                    <div id="flashcard" class="row">
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <div
@@ -105,16 +105,17 @@
 
                                 <div class="card-body">
                                     <div class="flscr">
-                                        <textarea id="flsq" cols="30" rows="10">
-                                                javascript Question</textarea>
-                                        <textarea id="flsa" cols="30" rows="10">
-                                                javascript Ansver</textarea>
+                                        <textarea id="flsq" cols="30" rows="10"></textarea>
+                                        <textarea id="flsa" cols="30" rows="10"></textarea>
                                         <button id="create" class="btn btn-primary" type="button">
                                             Create Flashcard
                                         </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="pool">
+                           
                         </div>
 
                         <!-- Ip Information -->
