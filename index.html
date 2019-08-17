@@ -6,13 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Berkeley Flashcards</title>
-    <link
-      href="assets/images/icon.jpg"
-      rel="icon"
-      type="image/x-icon"
-    />
+    <link href="assets/images/icon.jpg" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="assets/style/reset.css" />
     <link href="assets/style/style.css" rel="stylesheet" />
+
+
 </head>
 
 <body id="page-top">
@@ -31,23 +29,27 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0" />
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Classmates</span></a>
-                    <li id="userlist"></li>
+            <li id="userlist"></li>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider" />
+            <!-- Ip Information -->
+            <div id="ip" class="card-body">
         </ul>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
+                <!-- New creat flashcard button -->
+                <button id="newcreatbtn" onclick="openForm()" class="btn btn-primary" type="button">Create New
+                    Flashcard</button>
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Topbar Search -->
@@ -58,19 +60,19 @@
                                 placeholder="Search classmate" aria-label="Search" aria-describedby="basic-addon2" />
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">Search</button>
-                                 
+
                                 <button id="signout" class="btn btn-primary" type="button">
-                                        Sign Out
-                                    </button>
-                                    <div id="usr"></div>
+                                    Sign Out
+                                </button>
+                                <div id="usr"></div>
                             </div>
                         </div>
                     </form>
                 </nav>
 
-                 
+<!-- -----------------News--------------------------------------------------------------------------------------------------------- -->
                 <div class="container-fluid">
-                    
+
                     <div class="row">
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -93,64 +95,102 @@
                             </div>
                         </div>
                     </div>
-
+<!-- ------------------------------------------------------------------------------------------------------------------------- -->
                     <!-- Flashcards -->
-                    <div id="flashcard" class="row">
+                    <div id="pool" class="row">
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Flashcard</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Flashcards Pool</h6>
                                 </div>
 
                                 <div class="card-body">
+                                    <div id="yy"></div>
+                                    <div id="owner"></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+<!-- --------------------------------------------------------------------------------------------------------------------------------- -->
+                <!-- Created New flascard -->
+                <div id="flashcard" class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Create New Flashcard</h6>
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="col-xl-8 col-lg-7">
                                     <div class="flscr">
                                         <textarea id="flsq" cols="30" rows="10"></textarea>
                                         <textarea id="flsa" cols="30" rows="10"></textarea>
                                         <button id="create" class="btn btn-primary" type="button">
                                             Create Flashcard
                                         </button>
+                                        <button id="cls" onclick="closeForm()" class="btn btn-primary" type="button">
+                                            Close
+                                        </button>
+                                        <button id="acreate" class="btn btn-primary" type="button">
+                                            Create Another Answer
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="pool">
-                           
-                        </div>
-
-                        <!-- Ip Information -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">
-                                        Ip Information
-                                    </h6>
-                                    <div class="dropdown no-arrow"></div>
-                                </div>
-                                <!-- Card Body -->
-                                <div id="ip" class="card-body">
-                                    <div id="mp"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
+    </div>
+    <!-- slideshow ----------------------------------------------------------------------------------------------->
+    <div id="slideshow">
+        <div>
+            <img src="assets/images/question_img_1.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_2.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_3.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_4.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_5.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_6.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_7.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_8.jpg" width="351px">
+        </div>
 
-    
-   
+    </div>
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
     <script src="assets/javascript/project.js"></script>
- 
-     
+
+
 </body>
 
 </html>

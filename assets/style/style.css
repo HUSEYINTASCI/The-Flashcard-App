@@ -1498,16 +1498,16 @@ pre code {
   .col-xl-3 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex: 1 0 25%;
+    max-width: 100%;
   }
   .col-xl-4 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
     flex: 0 0 33.33333%;
     max-width: 29.33333%;
-    position: absolute;
-    margin: -646px 0 0 828px;
+    /* position: absolute; */
+    /* margin: -393px 0 0 829px; */
   }
   .col-xl-5 {
     -webkit-box-flex: 0;
@@ -4903,6 +4903,7 @@ input[type="button"].btn-block {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  /* margin: 0 0 0; */
   padding: 1.25rem;
 }
 
@@ -11620,15 +11621,16 @@ a:focus {
 }
 
 .flscr {
-  position: relative;
-  height: 10rem;
-  width: 100%;
+  
+  width: 151%;
+  margin: 0 0 0 1px;
+  z-index: 20;
 }
 
 @media (min-width: 768px) {
   .flscr {
     height: 20rem;
-    height: 527px;
+    height: 537px;
   }
 }
 
@@ -12087,7 +12089,7 @@ body.sidebar-toggled footer.sticky-footer {
 
   width: 224px;
     height: 24px;
-    position: absolute;
+    position: fixed;
     margin: -23px 0 0 0;
 }
 
@@ -12098,21 +12100,24 @@ body.sidebar-toggled footer.sticky-footer {
     width: 93px;
 }
 #usr{
-  margin: 0 0 0 722px;
-    position: absolute;
-    width: 93px;
+  margin: 0px 0 0 696px;
+  position: absolute;
+  width: 125px;
+  overflow: hidden;
+  height: 42px;
+  text-align: center;
+  line-height: 34px;
+  border: 2px solid green;
+  background-color: yellow;
+  border-radius: 128px;
 }
 
 #pool{
-  position: absolute;
-  width: 827px;
-  height: 635px;
-  background: whitesmoke;
-  margin: -645px 0 0 11px;
-  display:none;
+   
+  display: block;
 }
 
-#flashcard{display: block;}
+#flashcard{display: none;}
 
 #userlist{
   color: greenyellow;
@@ -12121,3 +12126,72 @@ body.sidebar-toggled footer.sticky-footer {
     font-size: large;
     cursor:pointer;
 }
+#ip{
+  color:greenyellow;
+}
+#newcreatbtn{
+  margin: 379px 0 0 886px;
+    position: absolute;
+    z-index: 10;
+}
+
+.dque{
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin: 0 52px 45px 0;
+  overflow: hidden;
+  line-height: 11.4em;
+  text-align: center;
+  display: inline-block;
+  border-radius: 125px;
+  border: 2px solid darkseagreen;
+  border-style: dashed;
+  background-color: bisque;
+}
+
+.sdqe{
+  width: 103px;
+    border-radius: 128px;
+    position: absolute;
+    height: 94px;
+    float: left;
+    margin: 0 52px 45px 0;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+#slideshow { 
+  margin: -500px 0 0 1078px;
+  position: absolute;
+  width: 373px;
+  height: 280px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+#slideshow > div { 
+  width: 100px;
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  right: 10px; 
+  bottom: 10px; 
+}
+#acreate{
+
+  margin: 11px 0 6px 568px;
+  position: absolute;
+  width: 205px;
+}
+#cls{
+  margin: 14px 0 0 340px;
+  position: absolute;
+
+}
+
+#create{
+  margin: 14px 0 0 0;
+    position: absolute;
+}
+
