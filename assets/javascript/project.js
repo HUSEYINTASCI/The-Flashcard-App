@@ -342,7 +342,6 @@ $(document).ready(function () {
       var docData = {
         queid: "Question-" + id,
         que: question,
-        city: ucity,
         owner: us,
         dateExample: firebase.firestore.Timestamp.fromDate(new Date()),
         ans: {
