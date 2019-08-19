@@ -12093,18 +12093,13 @@ body.sidebar-toggled footer.sticky-footer {
     margin: -23px 0 0 0;
 }
 
-#signout{
-
-  margin: 0 0 0 830px;
-    position: absolute;
-    width: 93px;
-}
+#signout{margin: 0 0 0 703px;position: absolute;width: 93px;}
 #usr{
-  margin: 6px 0px 0 154px;
-    position: absolute;
-    width: 185px;
-    overflow: hidden;
-    text-align: center;
+  margin: 6px 0px 0 66px;
+  position: absolute;
+  width: 185px;
+  overflow: hidden;
+  text-align: center;
 }
 
 #pool{
@@ -12238,19 +12233,9 @@ body.sidebar-toggled footer.sticky-footer {
   cursor:  pointer;
 }
 
-#showpool{
+#showpool{position: absolute;margin: 0 0 0 330px;width: 179px;}
 
-  position: absolute;
-    margin: 0 0 0 487px;
-    width: 179px;
-}
-
-#showmypool{
-
-  position: absolute;
-    margin: 0px 0 0 681px;
-    width: 135px;
-}
+#showmypool{position: absolute;margin: 0px 0 0 540px;width: 135px;}
 
 #userlist>li{
   color: greenyellow;

@@ -25,10 +25,12 @@ var question;
 //Flashcard Answer
 var ansver;
 //For Showing pools
-const lspool = document.querySelector('#myflashcard');
+const lspool = document.querySelector("#myflashcard");
 //For Showing classmates
 const userlist = document.querySelector("#userlist");
 let uname; 
+//for classmates flashcard
+let own;
 //Taking id
 
 var lookid;
@@ -42,7 +44,6 @@ $.ajax({
   url: news,
   method: "GET",                             ///<<<----  i use two ip api first taking just ip and other one searching ip
   success: function (n) {
-    console.log(n);
     $(document).ready(function () {
       $.getJSON("https://api.ipify.org?format=json", function (data) {
 
@@ -51,7 +52,7 @@ $.ajax({
 
         //Searching ip adress
         //---------------------------------------------------------------------------------------------------------------------
-        let ip = "https://api.ipstack.com/" + usrip + "?access_key=b13a49c64eaabd6cbc27cb45d6e1c8d2";
+        let ip = "https://api.ipdata.co/" + usrip + "?api-key=d6dc306b59bf5a5e8664d8274d85f60945a52fd90adbda82d73cc442";
 
         $.ajax({
           url: ip,
@@ -116,16 +117,44 @@ $(document).ready(function () {
       });
 
     }
+    //--------------------------------------------------------------------------------------------------------------------
+     // Deleting data
+  $(document).on("click", "#delete", function () {
+    var cn = confirm("Do you want to delete flashcard ?");
+    if (cn == true) {
+
+      if (lookowner == us) {
+        data.collection("flashcardpool").doc(lookid).delete().then(function () {
+          alert("Flashcard successfully deleted!");
+          userc = userc - 1;
+          data.collection("classmate").doc(user.uid).update({
+            usercard: userc
+        });
+        
+          closeForm();
+        }).catch(function (error) {
+          console.error("Error removing document: ", error);
+        });
+      } else {
+
+        alert("You can delete just own question.");
+      }
+
+    } else {
+
+    }
+
+  });
   });
   //-------------------------------------------------------------------------------------------------------
   //    Classmates list
 
   function listclassmate(doc) {
-    let li = document.createElement('li');
-    let ucard = document.createElement('span');
-        uname = document.createElement('span');
-
-    li.setAttribute('id', doc.id);
+    let li = document.createElement("li");
+    let ucard = document.createElement("span");
+        uname = document.createElement("span");
+    own=doc.data().username;
+    li.setAttribute("id", own);
 
     uname.textContent = doc.data().username;
     ucard.textContent = doc.data().usercard;
@@ -157,11 +186,11 @@ $(document).ready(function () {
   //  Listed Pool
   //-------------------------------------------------------------------------------------------------------
   function listpool(doc) {
-    let li = document.createElement('li');
-    let queid = document.createElement('span');
-    let owner = document.createElement('span');
+    let li = document.createElement("li");
+    let queid = document.createElement("span");
+    let owner = document.createElement("span");
 
-    li.setAttribute('id', doc.id);
+    li.setAttribute("id", doc.id);
     queid.textContent = doc.data().queid;
     owner.textContent = doc.data().owner;
 
@@ -170,13 +199,11 @@ $(document).ready(function () {
     lspool.appendChild(li);
 
 
-    // show question
-
-
-    queid.addEventListener('click', (e) => {
+    // Show question
+    queid.addEventListener("click", (e) => {
       e.stopPropagation();
-      let id = e.target.parentElement.getAttribute('id');
-      lookid = e.target.parentElement.getAttribute('id');
+      let id = e.target.parentElement.getAttribute("id");
+      lookid = e.target.parentElement.getAttribute("id");
       lookowner = doc.data().owner;
       document.querySelector("#create").style.display = "none";
       data.collection("flashcardpool").doc(id).get().then(doc => {
@@ -198,10 +225,10 @@ $(document).ready(function () {
     let changes = snapshot.docChanges();
 
     changes.forEach(change => {
-      if (change.type == 'added') {
+      if (change.type == "added") {
         listclassmate(change.doc);
-      } else if (change.type == 'removed') {
-        let li = userlist.querySelector('[id=' + change.doc.id + ']');
+      } else if (change.type == "removed") {
+        let li = userlist.querySelector("[id=" + change.doc.id + "]");
         userlist.removeChild(li);
       }
     });
@@ -209,16 +236,16 @@ $(document).ready(function () {
 
   //---------------------------------------------------------------------------------------------------------------------------------
 
-  // list my questions
+  // List my questions
   function shwmyflashcard() {
     data.collection("flashcardpool").where("owner", "==", us).onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
 
       changes.forEach(change => {
-        if (change.type == 'added') {
+        if (change.type == "added") {
           listpool(change.doc);
-        } else if (change.type == 'removed') {
-          let li = lspool.querySelector('[id=' + change.doc.id + ']');
+        } else if (change.type == "removed") {
+          let li = lspool.querySelector("[id=" + change.doc.id + "]");
           lspool.removeChild(li);
         }
       });
@@ -226,15 +253,15 @@ $(document).ready(function () {
   }
   //---------------------------------------------------------------------------------------------------------------------------------
 
-  // Show Pool
+  // Show Pool function
   function shwpool() {
-    data.collection('flashcardpool').orderBy('que').onSnapshot(snapshot => {
+    data.collection("flashcardpool").orderBy("que").onSnapshot(snapshot => {
       let changes = snapshot.docChanges();
       changes.forEach(change => {
-        if (change.type == 'added') {
+        if (change.type == "added") {
           listpool(change.doc);
-        } else if (change.type == 'removed') {
-          let li = lspool.querySelector('[id=' + change.doc.id + ']');
+        } else if (change.type == "removed") {
+          let li = lspool.querySelector("[id=" + change.doc.id + "]");
           lspool.removeChild(li);
         }
       });
@@ -245,45 +272,57 @@ $(document).ready(function () {
   //---------------------------------------------------------------------------------------------------------------------------------
   // Show My pool
   $("#showmypool").on("click", function () {
-    console.log("Mypool");
     $("#myflashcard").empty();
-
     shwmyflashcard();
   });
 
 
   //---------------------------------------------------------------------------------------------------------------------------------
-  // Show main pool
+  // Show  pool
   shwpool();
   $("#showpool").on("click", function () {
-    console.log("pool");
     $("#myflashcard").empty();
-
     shwpool();
   });
 
   //--------------------------------------------------------------------------------------------------------------------------------
-//  userlist.addEventListener('click', (e) => {
-//     e.stopPropagation();
-//     lookowner = e.target.parentElement.getAttribute('id');
-//    console.log(lookowner);
-  
 
-//     data.collection("flashcardpool").where(lookowner).onSnapshot(snapshot => {
-//       let changes = snapshot.docChanges();
+  //Click user name listing user flashcards
+  userlist.addEventListener("click", (e) => {
+  $("#myflashcard").empty();
+    e.stopPropagation();
+    lookowner = e.target.parentElement.getAttribute("id");
+   
+   data.collection("flashcardpool").where("owner", "==", lookowner).onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+
+    changes.forEach(change => {
+      if (change.type == "added") {
+        listpool(change.doc);
+      } else if (change.type == "removed") {
+        let li = lspool.querySelector("[id=" + change.doc.id + "]");
+        lspool.removeChild(li);
+      }
+    });
+  });
+
+  });
+   
+  // -----------------------------------------------------------------------------------------------------------------------------
   
-//       changes.forEach(change => {
-//         if (change.type == 'added') {
-//           listpool(change.doc);
-//         } else if (change.type == 'removed') {
-//           let li = lspool.querySelector('[id=' + change.doc.id + ']');
-//           lspool.removeChild(li);
-//         }
-//       });
-//     });
+  //Input Searching classmates
     
+  $(document).ready(function(){
+    $("Input").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#userlist li").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
 
-//   });
+  
+  // -----------------------------------------------------------------------------------------------------------------------------
   
   // SignOut
   $("#signout").on("click", function () {
@@ -293,32 +332,6 @@ $(document).ready(function () {
       console.log(error);
     });
 
-
-  });
-
-
-  // -----------------------------------------------------------------------------------------------------------------------------
-  // Deleting data
-  $(document).on("click", "#delete", function () {
-    var cn = confirm("Do you want to delete flashcard ?");
-    if (cn == true) {
-
-      if (lookowner == us) {
-        data.collection("flashcardpool").doc(lookid).delete().then(function () {
-          console.log("Document successfully deleted!");
-          alert("Flashcard successfully deleted!");
-          closeForm();
-        }).catch(function (error) {
-          console.error("Error removing document: ", error);
-        });
-      } else {
-
-        alert("You can delete just own question.");
-      }
-
-    } else {
-
-    }
 
   });
 
@@ -333,15 +346,16 @@ $(document).ready(function () {
     ansver = $("#flsa").val();
 
 
-    if (question == "" || ansver == "") {
+    if (question == "") {
       alert("You can not create empty flashcard");
 
     } else {
 
       // Creating New Flashcard
       var docData = {
-        queid: "Question-" + id,
+        queid: "Flashcard-" + id,
         que: question,
+        city:ucity,
         owner: us,
         dateExample: firebase.firestore.Timestamp.fromDate(new Date()),
         ans: {
@@ -349,8 +363,7 @@ $(document).ready(function () {
 
         }
       };
-      data.collection("flashcardpool").doc("Question-" + id).set(docData).then(function () {
-        console.log("Question successfully written!");
+      data.collection("flashcardpool").doc("Flashcard-" + id).set(docData).then(function () {
       });
 
       //Id Generator
@@ -360,7 +373,6 @@ $(document).ready(function () {
 
       };
       data.collection("uniqueid").doc("uid").set(idData).then(function () {
-        console.log("New id value successfully written!");
       });
 
       //User flashcard counter
@@ -383,8 +395,7 @@ $(document).ready(function () {
     }
   });
  
-  document.querySelector("#acreate").style.display = "none";
-
+ 
 
 
 });
@@ -395,12 +406,12 @@ $(document).ready(function () {
 $("#slideshow > div:gt(0)").hide();
 
 setInterval(function () {
-  $('#slideshow > div:first')
+  $("#slideshow > div:first")
     .fadeOut(1000)
     .next()
     .fadeIn(1000)
     .end()
-    .appendTo('#slideshow');
+    .appendTo("#slideshow");
 }, 10000);
 
 // Open and close flashcard Panel ---------------------------------------------------------------------------------------------------
@@ -409,6 +420,8 @@ function openForm() {
   $("#flsa").val("");
   document.querySelector("#pool").style.display = "none";
   document.querySelector("#flashcard").style.display = "block";
+  document.querySelector("#acreate").style.display = "none";
+
   if (lookowner == us) {
 
     document.querySelector("#delete").style.display = "blok";
@@ -423,7 +436,7 @@ function closeForm() {
   document.querySelector("#pool").style.display = "block";
   document.querySelector("#flashcard").style.display = "none";
 
-  // No time short way
+  // No time short way i will change
   location.reload();
   shwmyflashcard();
 }
