@@ -32,7 +32,6 @@ let uname;
 //for classmates flashcard
 let own;
 //Taking id
-
 var lookid;
 //Taking flashcard owner
 var lookowner;
@@ -189,12 +188,14 @@ $(document).ready(function () {
     let li = document.createElement("li");
     let queid = document.createElement("span");
     let owner = document.createElement("span");
+    let flashque = document.createElement("span");
 
     li.setAttribute("id", doc.id);
     queid.textContent = doc.data().queid;
     owner.textContent = doc.data().owner;
-
+    flashque.textContent=doc.data().que;
     li.appendChild(queid);
+    li.appendChild(flashque);
     li.appendChild(owner);
     lspool.appendChild(li);
 

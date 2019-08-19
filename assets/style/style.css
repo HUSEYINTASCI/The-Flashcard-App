@@ -12122,9 +12122,9 @@ body.sidebar-toggled footer.sticky-footer {
   color:greenyellow;
 }
 #newcreatbtn{
-  margin: 379px 0 0 886px;
-    position: absolute;
-    z-index: 10;
+  margin: 398px 0 0 886px;
+  position: absolute;
+  z-index: 10;
 }
 
 .dque{
@@ -12196,18 +12196,17 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 #myflashcard>li{
-  padding: 20px;
-    background: antiquewhite;
-    font-size: 20px;
-    color: #555;
-    position: relative;
-    border-bottom: 1px solid yellowgreen;
-    height: 100px;
-
+  padding: 9px;
+  background: antiquewhite;
+  font-size: 18px;
+  color: #555;
+  position: relative;
+  border-bottom: 1px solid yellowgreen;
+  height: 104px;
 }
 
 #myflashcard>li:nth-child(even){
-  padding: 20px;
+  padding: 9px;
   background: aliceblue;
 }
 
