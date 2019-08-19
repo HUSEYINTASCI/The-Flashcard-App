@@ -10601,7 +10601,7 @@ a:focus {
 .container{
   padding-left: 1.5rem;
     padding-right: 1.5rem;
-    margin: 162px 4px 0 437px;
+    margin: 47px 4px 0 437px;
     position: fixed;
 
 }
@@ -12100,16 +12100,11 @@ body.sidebar-toggled footer.sticky-footer {
     width: 93px;
 }
 #usr{
-  margin: 0px 0 0 696px;
-  position: absolute;
-  width: 125px;
-  overflow: hidden;
-  height: 42px;
-  text-align: center;
-  line-height: 34px;
-  border: 2px solid green;
-  background-color: yellow;
-  border-radius: 128px;
+  margin: 6px 0px 0 154px;
+    position: absolute;
+    width: 185px;
+    overflow: hidden;
+    text-align: center;
 }
 
 #pool{
@@ -12121,10 +12116,12 @@ body.sidebar-toggled footer.sticky-footer {
 
 #userlist{
   color: greenyellow;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: large;
-    cursor:pointer;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: large;
+  cursor:pointer;
+  list-style-type: none;
+  margin: 0 0 0 -29px;
 }
 #ip{
   color:greenyellow;
@@ -12136,18 +12133,17 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .dque{
-  width: 200px;
-  height: 200px;
-  float: left;
-  margin: 0 52px 45px 0;
-  overflow: hidden;
-  line-height: 11.4em;
-  text-align: center;
-  display: inline-block;
-  border-radius: 125px;
-  border: 2px solid darkseagreen;
-  border-style: dashed;
-  background-color: bisque;
+  width: 100px;
+    height: 100px;
+    margin: 0 52px 45px 0;
+    overflow: hidden;
+    line-height: 5.4em;
+    text-align: center;
+    display: inline-block;
+    border-radius: 125px;
+    border: 2px solid darkseagreen;
+    border-style: dashed;
+    background-color: bisque;
 }
 
 .sdqe{
@@ -12162,8 +12158,8 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 #slideshow { 
-  margin: -500px 0 0 1078px;
-  position: absolute;
+  margin: 84px 0 0 841px;
+  position: fixed;
   width: 373px;
   height: 280px;
   padding: 10px;
@@ -12178,20 +12174,109 @@ body.sidebar-toggled footer.sticky-footer {
   right: 10px; 
   bottom: 10px; 
 }
-#acreate{
-
-  margin: 11px 0 6px 568px;
-  position: absolute;
-  width: 205px;
-}
+#acreate{margin: 14px 0 6px 155px;position: absolute;width: 205px;}
 #cls{
-  margin: 14px 0 0 340px;
+  margin: 14px 0 0 721px;
   position: absolute;
-
 }
 
 #create{
   margin: 14px 0 0 0;
     position: absolute;
 }
+#scls{
+  margin: -8px 0 0 -11px;
+    position: absolute;
+}
 
+#delete{
+  position: absolute;
+    margin: 14px 0 0 372px;
+}
+
+#myflashcard{
+  list-style-type: none;
+  padding: 0;
+  cursor:pointer;
+}
+
+#myflashcard>li{
+  padding: 20px;
+    background: antiquewhite;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid yellowgreen;
+    height: 100px;
+
+}
+
+#myflashcard>li:nth-child(even){
+  padding: 20px;
+  background: aliceblue;
+}
+
+#myflashcard>li span{
+  display: block;
+}
+
+#myflashcard>li span:nth-child(2){
+  font-size: 16px;
+  margin-top: 6px;
+  color: #999;
+}
+
+#myflashcard>li div{
+  position: absolute;
+  top: 0;
+  right: 0px;
+  background: rgba(255,255,255,0.6);
+  width: 40px;
+  text-align: center;
+  padding: 10px 0;
+  font-weight:  bold;
+  cursor:  pointer;
+}
+
+#showpool{
+
+  position: absolute;
+    margin: 0 0 0 487px;
+    width: 179px;
+}
+
+#showmypool{
+
+  position: absolute;
+    margin: 0px 0 0 681px;
+    width: 135px;
+}
+
+#userlist>li{
+  color: greenyellow;
+  position: relative;
+}
+
+ 
+
+#userlist>li span{
+  display: block;
+}
+
+#userlist>li span:nth-child(2){
+  font-size: 16px;
+  color: yellow;
+  margin: -25px -14px 10px 103px;
+}
+
+#userlist>li div{
+  position: absolute;
+  top: 0;
+  right: 0px;
+  background: rgba(255,255,255,0.6);
+  width: 40px;
+  text-align: center;
+  padding: 10px 0;
+  font-weight:  bold;
+  cursor:  pointer;
+}

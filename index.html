@@ -60,7 +60,8 @@
                                 placeholder="Search classmate" aria-label="Search" aria-describedby="basic-addon2" />
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">Search</button>
-
+                                <button  id="showpool" class="btn btn-primary" type="button">Show Flashcard Pool</button>
+                                <button  id="showmypool" class="btn btn-primary" type="button">Show My Pool</button>
                                 <button id="signout" class="btn btn-primary" type="button">
                                     Sign Out
                                 </button>
@@ -95,8 +96,36 @@
                             </div>
                         </div>
                     </div>
+                     <!-- slideshow ----------------------------------------------------------------------------------------------->
+    <div id="slideshow">
+        <div>
+            <img src="assets/images/question_img_1.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_2.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_3.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_4.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_5.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_6.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_7.jpg" width="351px">
+        </div>
+        <div>
+            <img src="assets/images/question_img_8.jpg" width="351px">
+        </div>
+
+    </div>
 <!-- ------------------------------------------------------------------------------------------------------------------------- -->
-                    <!-- Flashcards -->
+                    <!-- MyFlashcard -->
                     <div id="pool" class="row">
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
@@ -106,8 +135,8 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <div id="yy"></div>
-                                    <div id="owner"></div>
+                                    <ul id="myflashcard"></ul>
+                                    
 
 
                                 </div>
@@ -142,6 +171,9 @@
                                         <button id="acreate" class="btn btn-primary" type="button">
                                             Create Another Answer
                                         </button>
+                                        <button id="delete" class="btn btn-primary" type="button">
+                                            Delete Question
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -154,34 +186,7 @@
         </div>
     </div>
     </div>
-    <!-- slideshow ----------------------------------------------------------------------------------------------->
-    <div id="slideshow">
-        <div>
-            <img src="assets/images/question_img_1.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_2.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_3.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_4.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_5.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_6.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_7.jpg" width="351px">
-        </div>
-        <div>
-            <img src="assets/images/question_img_8.jpg" width="351px">
-        </div>
-
-    </div>
+   
     <!-- --------------------------------------------------------------------------------------------------------------- -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>

@@ -1,30 +1,51 @@
+//User ip
 var usrip;
+// User city
+var ucity;
+// User Langitute
 var lan;
+// User Longitute
 var lon;
+// User question
 var que;
+//User Answer
 var ans;
+//For flash card user name
 var owner;
+//Uniqe id for creating flashcard
 var id;
-var qarr = []
-var qarr2 = []
+//User city
 var userc;
+// User name
 var us;
+//Classmate id
 var classmateid;
-var sil;
+//Flashcard question
 var question;
+//Flashcard Answer
 var ansver;
+//For Showing pools
+const lspool = document.querySelector('#myflashcard');
+//For Showing classmates
+const userlist = document.querySelector("#userlist");
+let uname; 
+//Taking id
+
+var lookid;
+//Taking flashcard owner
+var lookowner;
 // News
 //---------------------------------------------------------------------------------------------------------------------
 let news = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=b4538a852bc8449fa32e9a53991b4b2f";
 
 $.ajax({
   url: news,
-  method: "GET",
+  method: "GET",                             ///<<<----  i use two ip api first taking just ip and other one searching ip
   success: function (n) {
     console.log(n);
     $(document).ready(function () {
       $.getJSON("https://api.ipify.org?format=json", function (data) {
-       
+
         usrip = data.ip;
 
 
@@ -36,8 +57,8 @@ $.ajax({
           url: ip,
           method: "GET",
           success: function (p) {
-            console.log(p);
 
+            ucity = p.city;
 
             // ip information-------------------------------------------------------------------------------------------
             lan = p.latitude;
@@ -50,11 +71,11 @@ $.ajax({
           }
         });
       });
-// news-------------------------------------------------------------------------------------------------------------------------------
-      $("#r1").prepend($("<img src=" + n.articles[0].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[0].title), $("<a href=" + n.articles[0].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">link</a>"));
-      $("#r2").prepend($("<img src=" + n.articles[1].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[1].title), $("<a href=" + n.articles[1].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">link</a>"));
-      $("#r3").prepend($("<img src=" + n.articles[2].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[2].title), $("<a href=" + n.articles[2].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">link</a>"));
-      $("#r4").prepend($("<img src=" + n.articles[3].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[3].title), $("<a href=" + n.articles[3].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">link</a>"));
+      // news-------------------------------------------------------------------------------------------------------------------------------
+      $("#r1").prepend($("<img src=" + n.articles[0].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[0].title), $("<a href=" + n.articles[0].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">Read</a>"));
+      $("#r2").prepend($("<img src=" + n.articles[1].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[1].title), $("<a href=" + n.articles[1].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">Read</a>"));
+      $("#r3").prepend($("<img src=" + n.articles[2].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[2].title), $("<a href=" + n.articles[2].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">Read</a>"));
+      $("#r4").prepend($("<img src=" + n.articles[3].urlToImage + " width=" + "200px" + " height=" + "100px" + ">"), $("<div>").text(n.articles[3].title), $("<a href=" + n.articles[3].url + " target=" + "_blank" + " rel=" + "noopener noreferrer" + ">Read</a>"));
     });
   }
 });
@@ -77,7 +98,7 @@ $(document).ready(function () {
   var data = firebase.firestore();
 
 
-// User Login---------------------------------------------------------------------------------------------------------
+  // User Login---------------------------------------------------------------------------------------------------------
   uconnect.onAuthStateChanged(user => {
     if (user) {
       us = user.username;
@@ -87,13 +108,10 @@ $(document).ready(function () {
         classmateid = user.uid;
         us = doc.data().username;
         userc = doc.data().usercard;
-       
-         
+
+
         // account info 
         $("#usr").prepend($("<p>").text("Hello " + us));
-
-
-
 
       });
 
@@ -101,24 +119,29 @@ $(document).ready(function () {
   });
   //-------------------------------------------------------------------------------------------------------
   //    Classmates list
-   
-  data.collection("classmate").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      var usrl = $("<li>").text(doc.data().username + "---" + doc.data().usercard);
 
-      $("#userlist").prepend(usrl);
-    });
-  });
+  function listclassmate(doc) {
+    let li = document.createElement('li');
+    let ucard = document.createElement('span');
+        uname = document.createElement('span');
+
+    li.setAttribute('id', doc.id);
+
+    uname.textContent = doc.data().username;
+    ucard.textContent = doc.data().usercard;
 
 
+    li.appendChild(uname);
+    li.appendChild(ucard);
+
+    userlist.appendChild(li);
 
 
-
+  }
 
   //-------------------------------------------------------------------------------------------------------
   // Reading id
   var docRef = data.collection("uniqueid").doc("uid");
-
   docRef.get().then(function (doc) {
     if (doc.exists) {
       id = doc.data().qid;
@@ -133,73 +156,179 @@ $(document).ready(function () {
 
   //  Listed Pool
   //-------------------------------------------------------------------------------------------------------
-  data.collection("flashcardpool").onSnapshot(function (querySnapshot) {
+  function listpool(doc) {
+    let li = document.createElement('li');
+    let queid = document.createElement('span');
+    let owner = document.createElement('span');
 
-    querySnapshot.forEach(function (doc) {
-      qarr.push(doc.data().owner + " --- " + doc.data().que);
-      qarr2.push(doc.id);
+    li.setAttribute('id', doc.id);
+    queid.textContent = doc.data().queid;
+    owner.textContent = doc.data().owner;
 
+    li.appendChild(queid);
+    li.appendChild(owner);
+    lspool.appendChild(li);
+
+
+    // show question
+
+
+    queid.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let id = e.target.parentElement.getAttribute('id');
+      lookid = e.target.parentElement.getAttribute('id');
+      lookowner = doc.data().owner;
+      document.querySelector("#create").style.display = "none";
+      data.collection("flashcardpool").doc(id).get().then(doc => {
+
+        question = $("#flsq").val(doc.data().que);
+        ansver = $("#flsa").val(doc.data().ans.ans1);
+
+
+      });
+      openForm();
     });
 
 
-    var poolarr = [];
-    for (var i = 0; i < qarr.length; i++) {
-      poolarr.push("<div id=" + qarr2[i] + " class=" + "dque" + ">" + qarr[i] + '</div>');
 
-    }
-    $("#yy").append(poolarr);
+  }
+  //---------------------------------------------------------------------------------------------------------------------------------
+  // List classmate query
+  data.collection("classmate").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
 
+    changes.forEach(change => {
+      if (change.type == 'added') {
+        listclassmate(change.doc);
+      } else if (change.type == 'removed') {
+        let li = userlist.querySelector('[id=' + change.doc.id + ']');
+        userlist.removeChild(li);
+      }
+    });
   });
-  //-------------------------------------------------------------------------------------------------------
-  // data.collection("flashcardpool").where("owner", "==", us)
-  // .get()
-  // .then(function(querySnapshot) {
-  //     querySnapshot.forEach(function(doc) {
-  //         // doc.data() is never undefined for query doc snapshots
-  //         console.log(doc.id, " => ", doc.data());
-  //     });
-  // })
-  // .catch(function(error) {
-  //     console.log("Error getting documents: ", error);
-  // });
+
+  //---------------------------------------------------------------------------------------------------------------------------------
+
+  // list my questions
+  function shwmyflashcard() {
+    data.collection("flashcardpool").where("owner", "==", us).onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+
+      changes.forEach(change => {
+        if (change.type == 'added') {
+          listpool(change.doc);
+        } else if (change.type == 'removed') {
+          let li = lspool.querySelector('[id=' + change.doc.id + ']');
+          lspool.removeChild(li);
+        }
+      });
+    });
+  }
+  //---------------------------------------------------------------------------------------------------------------------------------
+
+  // Show Pool
+  function shwpool() {
+    data.collection('flashcardpool').orderBy('que').onSnapshot(snapshot => {
+      let changes = snapshot.docChanges();
+      changes.forEach(change => {
+        if (change.type == 'added') {
+          listpool(change.doc);
+        } else if (change.type == 'removed') {
+          let li = lspool.querySelector('[id=' + change.doc.id + ']');
+          lspool.removeChild(li);
+        }
+      });
+    });
 
 
-  // signOut
+  }
+  //---------------------------------------------------------------------------------------------------------------------------------
+  // Show My pool
+  $("#showmypool").on("click", function () {
+    console.log("Mypool");
+    $("#myflashcard").empty();
+
+    shwmyflashcard();
+  });
+
+
+  //---------------------------------------------------------------------------------------------------------------------------------
+  // Show main pool
+  shwpool();
+  $("#showpool").on("click", function () {
+    console.log("pool");
+    $("#myflashcard").empty();
+
+    shwpool();
+  });
+
+  //--------------------------------------------------------------------------------------------------------------------------------
+//  userlist.addEventListener('click', (e) => {
+//     e.stopPropagation();
+//     lookowner = e.target.parentElement.getAttribute('id');
+//    console.log(lookowner);
+  
+
+//     data.collection("flashcardpool").where(lookowner).onSnapshot(snapshot => {
+//       let changes = snapshot.docChanges();
+  
+//       changes.forEach(change => {
+//         if (change.type == 'added') {
+//           listpool(change.doc);
+//         } else if (change.type == 'removed') {
+//           let li = lspool.querySelector('[id=' + change.doc.id + ']');
+//           lspool.removeChild(li);
+//         }
+//       });
+//     });
+    
+
+//   });
+  
+  // SignOut
   $("#signout").on("click", function () {
     uconnect.signOut().then(function () {
       window.location.href = "signin.html";
     }).catch(function (error) {
-
+      console.log(error);
     });
 
 
   });
 
 
-  // Qestion select on the poll------------------------------------------------------------------------------
-  $(document).on("click", ".dque", function () {
-    var rp = $(this).attr("id");
+  // -----------------------------------------------------------------------------------------------------------------------------
+  // Deleting data
+  $(document).on("click", "#delete", function () {
+    var cn = confirm("Do you want to delete flashcard ?");
+    if (cn == true) {
 
+      if (lookowner == us) {
+        data.collection("flashcardpool").doc(lookid).delete().then(function () {
+          console.log("Document successfully deleted!");
+          alert("Flashcard successfully deleted!");
+          closeForm();
+        }).catch(function (error) {
+          console.error("Error removing document: ", error);
+        });
+      } else {
 
-    openForm();
-    $("#create").css("display", "none");
-    data.collection("flashcardpool").doc(rp).get().then(doc => {
+        alert("You can delete just own question.");
+      }
 
-      question = $("#flsq").val(doc.data().que);
-      ansver = $("#flsa").val(doc.data().ans.ans1);
+    } else {
 
-
-    });
+    }
 
   });
 
   //-------------------------------------------------------------------------------------------------------
   //Create Flashcard
   $("#create").on("click", function () {
-
+ 
     id = id + 1;
     userc = userc + 1;
-
+ 
     question = $("#flsq").val();
     ansver = $("#flsa").val();
 
@@ -209,19 +338,19 @@ $(document).ready(function () {
 
     } else {
 
-
-
       // Creating New Flashcard
       var docData = {
+        queid: "Question-" + id,
         que: question,
+        city: ucity,
         owner: us,
-        dateExample: firebase.firestore.Timestamp.fromDate(new Date("December 10, 1815")),
+        dateExample: firebase.firestore.Timestamp.fromDate(new Date()),
         ans: {
           ans1: ansver
 
         }
       };
-      data.collection("flashcardpool").doc("question" + id).set(docData).then(function () {
+      data.collection("flashcardpool").doc("Question-" + id).set(docData).then(function () {
         console.log("Question successfully written!");
       });
 
@@ -249,19 +378,21 @@ $(document).ready(function () {
       //Questin and Answer Clear
       $("#flsq").val("");
       $("#flsa").val("");
-      
-      
-      
+
+        alert("Flashcard successfully Created!");
+
     }
   });
+ 
   document.querySelector("#acreate").style.display = "none";
 
+
+
 });
-//-------------------------------------------------------------------------------------------------------
 
 
-
-// Slide Show ------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------
+// Slide Show -----------------------------------------------------------------------------------------------------------
 $("#slideshow > div:gt(0)").hide();
 
 setInterval(function () {
@@ -273,21 +404,28 @@ setInterval(function () {
     .appendTo('#slideshow');
 }, 10000);
 
-// Open flascard Panel ---------------------------------------------------------------------------------------
+// Open and close flashcard Panel ---------------------------------------------------------------------------------------------------
 function openForm() {
   $("#flsq").val("");
   $("#flsa").val("");
   document.querySelector("#pool").style.display = "none";
   document.querySelector("#flashcard").style.display = "block";
-  document.querySelector("#create").style.display = "block";
-  
+  if (lookowner == us) {
+
+    document.querySelector("#delete").style.display = "blok";
+  } else {
+    document.querySelector("#delete").style.display = "none";
+  }
+
+
 }
 
 function closeForm() {
   document.querySelector("#pool").style.display = "block";
   document.querySelector("#flashcard").style.display = "none";
-  
+
   // No time short way
   location.reload();
+  shwmyflashcard();
 }
 

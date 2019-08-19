@@ -1,5 +1,6 @@
 $(document).ready(function () {
     //Auth Database Connection
+    //----------------------------------------------------------------------------------------------------------------
     var firebaseConfig = {
         apiKey: "AIzaSyDEvybQhM7ZXpG9EgEPS7mp1VRVDyEx1dA",
         authDomain: "flashcard-5e3f1.firebaseapp.com",
@@ -14,7 +15,8 @@ $(document).ready(function () {
     var uconnect = firebase.auth();
     var data = firebase.firestore();
 
-
+//----------------------------------------------------------------------------------------------------------------
+   
     //Signup button
     $("#signupbtn").click(function () {
         var username = $("#username").val();
@@ -39,8 +41,10 @@ $(document).ready(function () {
 
 
 })
+//----------------------------------------------------------------------------------------------------------------
+   
 // Going Sign in Html
-$("#cls").on("click", function () {
+$("#scls").on("click", function () {
 
     window.location.href = "signin.html";
 
