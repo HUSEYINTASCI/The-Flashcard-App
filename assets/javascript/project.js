@@ -144,6 +144,9 @@ $(document).ready(function () {
     }
 
   });
+
+
+
   });
   //-------------------------------------------------------------------------------------------------------
   //    Classmates list
@@ -396,9 +399,18 @@ $(document).ready(function () {
     }
   });
  
- 
+ //-----------------------------------------------------------------------------------------------------------------------------------
+//Update Answer
+$("#update").on("click",function(){
+  ansver = $("#flsa").val();
+  data.collection("flashcardpool").doc(lookid).update({
+    "ans.ans1":ansver
+  });
 
 
+});
+
+//--------------------------------------------------------------------------------------------------------------------------------------
 });
 
 
@@ -424,8 +436,8 @@ function openForm() {
   document.querySelector("#acreate").style.display = "none";
 
   if (lookowner == us) {
-
-    document.querySelector("#delete").style.display = "blok";
+    document.querySelector("#update").style.display = "block";
+    document.querySelector("#delete").style.display = "block";
   } else {
     document.querySelector("#delete").style.display = "none";
   }
