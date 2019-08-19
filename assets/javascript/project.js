@@ -51,7 +51,7 @@ $.ajax({
 
         //Searching ip adress
         //---------------------------------------------------------------------------------------------------------------------
-        let ip = "http://api.ipstack.com/" + usrip + "?access_key=b13a49c64eaabd6cbc27cb45d6e1c8d2";
+        let ip = "https://cors-anywhere.herokuapp.com/http://api.ipstack.com/" + usrip + "?access_key=b13a49c64eaabd6cbc27cb45d6e1c8d2";
 
         $.ajax({
           url: ip,
