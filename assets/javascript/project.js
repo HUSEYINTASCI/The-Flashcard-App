@@ -209,6 +209,7 @@ $(document).ready(function () {
       let id = e.target.parentElement.getAttribute("id");
       lookid = e.target.parentElement.getAttribute("id");
       lookowner = doc.data().owner;
+      $("#formtext2").text(lookowner+"-"+lookid);
       document.querySelector("#create").style.display = "none";
       data.collection("flashcardpool").doc(id).get().then(doc => {
 
@@ -277,6 +278,7 @@ $(document).ready(function () {
   // Show My pool
   $("#showmypool").on("click", function () {
     $("#myflashcard").empty();
+    $("#formtext").text("My Flashcards");
     shwmyflashcard();
   });
 
@@ -286,6 +288,7 @@ $(document).ready(function () {
   shwpool();
   $("#showpool").on("click", function () {
     $("#myflashcard").empty();
+    $("#formtext").text("Flashcard Pool");
     shwpool();
   });
 
@@ -296,7 +299,7 @@ $(document).ready(function () {
   $("#myflashcard").empty();
     e.stopPropagation();
     lookowner = e.target.parentElement.getAttribute("id");
-   
+   $("#formtext").text(lookowner+"-Flashcards");
    data.collection("flashcardpool").where("owner", "==", lookowner).onSnapshot(snapshot => {
     let changes = snapshot.docChanges();
 
