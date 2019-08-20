@@ -431,10 +431,10 @@ h6, .h6 {
 }
 
 hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-top: 1rem; */
+  /* margin-bottom: 1rem; */
   border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid yellowgreen;
 }
 
 small,
@@ -12122,7 +12122,7 @@ body.sidebar-toggled footer.sticky-footer {
   color:greenyellow;
 }
 #newcreatbtn{
-  margin: 398px 0 0 886px;
+  margin: 424px 0 0 886px;
   position: absolute;
   z-index: 10;
 }
@@ -12169,20 +12169,20 @@ body.sidebar-toggled footer.sticky-footer {
   right: 10px; 
   bottom: 10px; 
 }
-#acreate{margin: 14px 0 6px 155px;position: absolute;width: 205px;}
+#acreate{margin: 5px 0 6px 155px;position: absolute;width: 205px;}
 #cls{
-  margin: 14px 0 0 721px;
+  margin: 5px 0 0 721px;
   position: absolute;
 }
 #update{
-  margin: 14px 0 0 529px;
+  margin: 5px 0 0 529px;
   display:none;
   position: absolute;
   width: 146px;
 }
 #create{
-  margin: 14px 0 0 0;
-    position: absolute;
+  margin: 5px 0 0 0;
+  position: absolute;
 }
 #scls{
   margin: -8px 0 0 -11px;
@@ -12191,7 +12191,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 #delete{
   position: absolute;
-    margin: 14px 0 0 372px;
+  margin: 5px 0 0 372px;
 }
 
 #myflashcard{
@@ -12268,4 +12268,13 @@ body.sidebar-toggled footer.sticky-footer {
   padding: 10px 0;
   font-weight:  bold;
   cursor:  pointer;
+}
+
+#answer2{
+  position: absolute;
+  margin: -246px 0 0 -29px;
+  background-color: royalblue;
+  border-radius: 22px;
+  color: aliceblue;
+display:none;
 }

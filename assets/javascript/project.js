@@ -210,11 +210,12 @@ $(document).ready(function () {
       lookid = e.target.parentElement.getAttribute("id");
       lookowner = doc.data().owner;
       $("#formtext2").text(lookowner+"-"+lookid);
+      $("#answer2").css("display","block");
       document.querySelector("#create").style.display = "none";
       data.collection("flashcardpool").doc(id).get().then(doc => {
 
         question = $("#flsq").val(doc.data().que);
-        ansver = $("#flsa").val(doc.data().ans.ans1);
+        ansver = $("#flsa").val(`${doc.data().ans.ans1}`+`${"<br>"}`+`${doc.data().ans.ans2}`);
 
 
       });
@@ -293,7 +294,6 @@ $(document).ready(function () {
   });
 
   //--------------------------------------------------------------------------------------------------------------------------------
-
   //Click user name listing user flashcards
   userlist.addEventListener("click", (e) => {
   $("#myflashcard").empty();
@@ -342,7 +342,35 @@ $(document).ready(function () {
 
   });
 
-  //-------------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------------------------------------
+// Add second answer
+  $(document).on("click","#answer2",function(){
+    $("#update").css("display","none");
+    $("#acreate").css("display","block");
+    $("#delete").css("display","none");
+          ansver.val("");
+
+        
+
+
+  });
+//-------------------------------------------------------------------------------------------------------------------------------
+//create second answer
+  $(document).on("click","#acreate",function(){
+
+
+    ansver = $("#flsa").val();
+    data.collection("flashcardpool").doc(lookid).update({
+      "ans.ans2":lookowner+"----"+ansver
+    });
+  
+  alert("Flashcard second answer successfully Created!");
+   
+  });
+
+
+   
+  //-----------------------------------------------------------------------------------------------------------------------------
   //Create Flashcard
   $("#create").on("click", function () {
  
@@ -366,7 +394,7 @@ $(document).ready(function () {
         owner: us,
         dateExample: firebase.firestore.Timestamp.fromDate(new Date()),
         ans: {
-          ans1: ansver
+          ans1:ansver
 
         }
       };
