@@ -482,7 +482,7 @@ function closeForm() {
   document.querySelector("#flashcard").style.display = "none";
 
   // // No time short way i will change
-  // location.reload();
+  location.reload();
   shwmyflashcard();
 }
 
