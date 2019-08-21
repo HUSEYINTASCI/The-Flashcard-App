@@ -215,7 +215,7 @@ $(document).ready(function () {
       data.collection("flashcardpool").doc(id).get().then(doc => {
 
         question = $("#flsq").val(doc.data().que);
-        ansver = $("#flsa").val(`${doc.data().ans.ans1}`+`${"<br>"}`+`${doc.data().ans.ans2}`);
+        ansver = $("#flsa").val(`${doc.data().ans.ans1}\n\n\n\n${doc.data().ans.ans2}`);
 
 
       });
@@ -481,8 +481,8 @@ function closeForm() {
   document.querySelector("#pool").style.display = "block";
   document.querySelector("#flashcard").style.display = "none";
 
-  // No time short way i will change
-  location.reload();
+  // // No time short way i will change
+  // location.reload();
   shwmyflashcard();
 }
 
