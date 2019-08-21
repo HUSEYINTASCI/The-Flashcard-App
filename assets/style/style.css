@@ -12111,12 +12111,12 @@ body.sidebar-toggled footer.sticky-footer {
 
 #userlist{
   color: greenyellow;
-  text-align: center;
+  text-align: left;
   font-family: sans-serif;
   font-size: large;
   cursor:pointer;
   list-style-type: none;
-  margin: 0 0 0 -29px;
+  margin: 0 0 0 17px;
 }
 #ip{
   color:greenyellow;
@@ -12175,7 +12175,7 @@ body.sidebar-toggled footer.sticky-footer {
   position: absolute;
 }
 #update{
-  margin: 5px 0 0 529px;
+  margin: 5px 0 0 509px;
   display:none;
   position: absolute;
   width: 146px;
@@ -12191,7 +12191,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 #delete{
   position: absolute;
-  margin: 5px 0 0 372px;
+  margin: 5px 0 0 354px;
 }
 
 #myflashcard{
@@ -12207,7 +12207,7 @@ body.sidebar-toggled footer.sticky-footer {
   color: #555;
   position: relative;
   border-bottom: 1px solid yellowgreen;
-  height: 104px;
+  height: 115px;
 }
 
 #myflashcard>li:nth-child(even){
@@ -12255,7 +12255,7 @@ body.sidebar-toggled footer.sticky-footer {
 #userlist>li span:nth-child(2){
   font-size: 16px;
   color: yellow;
-  margin: -25px -14px 10px 103px;
+  margin: -25px 0 8px 168px;
 }
 
 #userlist>li div{
