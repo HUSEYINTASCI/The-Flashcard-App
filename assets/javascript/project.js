@@ -215,8 +215,13 @@ $(document).ready(function () {
       data.collection("flashcardpool").doc(id).get().then(doc => {
 
         question = $("#flsq").val(doc.data().que);
-        ansver = $("#flsa").val(`${doc.data().ans.ans1}\n\n\n\n${doc.data().ans.ans2}`);
+     
+        if(`${doc.data().ans.ans2}`=="undefined"){
 
+          ansver = $("#flsa").val(`${doc.data().ans.ans1}`);
+        }else{
+        ansver = $("#flsa").val(`${doc.data().ans.ans1}\n\n\n\n${doc.data().ans.ans2}`);
+        }
 
       });
       openForm();
