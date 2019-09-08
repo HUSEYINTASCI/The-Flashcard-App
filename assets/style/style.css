@@ -12171,14 +12171,14 @@ body.sidebar-toggled footer.sticky-footer {
 }
 #acreate{margin: 5px 0 6px 155px;position: absolute;width: 205px;}
 #cls{
-  margin: 5px 0 0 670px;
+  margin:249px 0 0 -67px;
   position: absolute;
 }
 #update{
-  margin: 5px 0 0 509px;
+  margin: 5px 0 0 498px;
   display:none;
   position: absolute;
-  width: 146px;
+  width: 134px;
 }
 #create{
   margin: 5px 0 0 0;

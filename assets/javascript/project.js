@@ -61,13 +61,8 @@ $.ajax({
             ucity = p.city;
 
             // ip information-------------------------------------------------------------------------------------------
-            lan = p.latitude;
-            lon = p.longitude;
-            $("#ip").prepend($("<p>").text("Ip latitude: " + lan));
-            $("#ip").prepend($("<p>").text("Ip longitude: " + lon));
             $("#ip").prepend($("<p>").text("City: " + p.city));
-            $("#ip").prepend($("<p>").text("Ip Adress: " + p.ip));
-            $("#ip").prepend($("<p>").text("Ip Information"));
+          
           }
         });
       });
@@ -366,7 +361,7 @@ $(document).ready(function () {
 
     ansver = $("#flsa").val();
     data.collection("flashcardpool").doc(lookid).update({
-      "ans.ans2":lookowner+"----"+ansver
+      "ans.ans2":lookowner+" ----> "+ansver
     });
   
   alert("Flashcard second answer successfully Created!");
