@@ -2617,8 +2617,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #4e73df;
+  color: #4e73df;
+  /* background-color: #4e73df; */
   border-color: #4e73df;
 }
 
@@ -11149,7 +11149,7 @@ a:focus {
   font-size: 0.65rem;
   display: block;
   position: absolute;
-  margin: 0 0 0 26px;
+  /* margin: 0 0 0 26px; */
 }
 
 .sidebar .nav-item.active .nav-link {
@@ -11259,7 +11259,7 @@ a:focus {
   height: 4.375rem;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 800;
+  /* font-weight: 800; */
   padding: 1.5rem 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -11327,6 +11327,7 @@ a:focus {
     font-size: 0.85rem;
     display: inline;
     font-size: x-large;
+    text-transform: uppercase;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
@@ -12100,6 +12101,7 @@ body.sidebar-toggled footer.sticky-footer {
   width: 185px;
   overflow: hidden;
   text-align: center;
+  color: #4e73df;
 }
 
 #pool{
@@ -12113,10 +12115,11 @@ body.sidebar-toggled footer.sticky-footer {
   color: greenyellow;
   text-align: left;
   font-family: sans-serif;
-  font-size: large;
+  /* font-size: large; */
   cursor:pointer;
   list-style-type: none;
   margin: 0 0 0 17px;
+  text-transform: uppercase;
 }
 #ip{
   color:greenyellow;
