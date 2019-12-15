@@ -46,6 +46,6 @@ $(document).ready(function () {
 // Going Sign in Html
 $("#scls").on("click", function () {
 
-    window.location.href = "signin.html";
+    window.location.href = "flashcard.html";
 
 });

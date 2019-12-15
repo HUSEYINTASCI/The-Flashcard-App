@@ -6,39 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>Berkeley Flashcards Signup</title>
+
+    <title>Berkeley Flashcards Sign In</title>
     <link href="assets/images/icon.jpg" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="assets/style/reset.css" />
     <link href="assets/style/flashcard.css" rel="stylesheet" />
     <link href="assets/style/style.css" rel="stylesheet" />
 </head>
 
-<body id="sgnp">
-    <body id="login-page">
-        <div id="form2" class="form">
-                <img src="assets/images/icon.jpg" alt="im" >
-                <h2 >Flashcard Sign Up</h2>
-               
-               <!-- username -->
-               
-                    <input type="text" class="form-control" id="username" placeholder="Username">
-                
-                <!-- user email adress -->
-                
-                    <input type="email" class="form-control" id="email" placeholder="E-Mail">
-                 
-                <!-- User password -->
-        
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-           
-                <!-- signup button -->
-                <button id="signupbtn" class="btn btn-secondary">Sign Up</button>
-                <hr>
-                <!-- Cancel button goin sign in html -->
-                <button id="scls" class="btn btn-secondary">Cancel</button>
-            </div>
-        </div>
+<body id="lgn">
+    <header class="main_menu home_menu">
+      
+    </header>
+   
+    
+</div>
+<div class="login-page">
+    <div class="form">
+        <img src="assets/images/icon.jpg" alt="im" >
+      <h2>Flashcard Application</h2>
+      
+     
+      <img class="cardimg" src="assets/images/cards.gif" alt="Harry">
+      <p>A better way to study with flashcards is here. This App makes it simple to create your own flashcards, study those of a classmate, or search our archive of millions of flashcard decks from other students.</p>
+        <p>Creating your own set of flashcards is simple with our free flashcard maker — just add a term and definition.Once your flashcard set is complete, you can study and share it with friends.</p>
+       <button   id="but1" class="btn btn-secondary ">Sign In »</button>
+       <button  id="but2" class="btn btn-secondary ">Sign Up »</button>
     </div>
+  </div>
     <div class="snowflakes" aria-hidden="true">
         <div class="snowflake">
          <img class="snowcard" src="assets/images/card.jpg" alt="card">
@@ -77,12 +72,24 @@
             <img class="snowcard" src="assets/images/card4.jpg" alt="card">
         </div>
       </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
-    <script src="assets/javascript/signup.js"></script>
-</body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+      <script src="assets/javascript/signin.js"></script>
+<script>
 
+$("#but1").on("click",function(){
+
+window.location.href = "signin.html";
+
+});
+
+$("#but2").on("click",function(){
+
+window.location.href = "signup.html";
+
+});
+
+</script>
+</body>
 </html>
