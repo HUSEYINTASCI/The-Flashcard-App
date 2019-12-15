@@ -5,7 +5,7 @@ A flashcard or flash card is a card bearing information on both sides, which is 
 
 Front end development with Firebase
 
- Link: https://huseyintasci.github.io/The-Flashcard-App/signin.html
+ Link: https://huseyintasci.github.io/The-Flashcard-App/flashcard.html
 
 
 
